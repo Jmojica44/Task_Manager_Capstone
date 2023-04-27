@@ -1,6 +1,6 @@
 from flask_marshmallow import Marshmallow
 from marshmallow import post_load, fields
-from database.models import User, Car
+from database.models import User, Car, Task
 
 ma = Marshmallow()
 
@@ -59,3 +59,22 @@ cars_schema = CarSchema(many=True)
 
 
 # TODO: Add your schemas below
+class TaskSchema(ma.Schema):
+    id = fields.Integer(primary_key=True)
+    task = fields.String(required=True)
+    category = fields.String(required=True)
+    status = fields.String(required=True)
+    point_value = fields.Integer()
+    start_date = fields.Integer()
+    end_date = fields.Integer()
+    user_id = fields.Integer()
+    user = ma.Nested(UserSchema, many=False)
+    class Meta:
+        fields = ("id", "task", "category", "status", "point_value", "start_date", "end_date" "user_id", "user")
+    
+    @post_load
+    def create_task(self, data, **kwargs):
+        return Task(**data)
+
+task_schema = TaskSchema()
+tasks_schema = TaskSchema(many=True)
