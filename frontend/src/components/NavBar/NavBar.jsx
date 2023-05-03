@@ -12,7 +12,7 @@ const Navbar = () => {
       <ul>
         <li className="brand">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>React/Flask JWT</b>
+            <b>Task Manager</b>
           </Link>
         </li>
         <li>
@@ -21,6 +21,9 @@ const Navbar = () => {
           ) : (
             <button onClick={() => navigate("/login")}>Login</button>
           )}
+            <button onClick={() => navigate("/addtask")}>Add Task</button>
+            <button onClick={() => navigate("/viewtask")}>View Tasks</button>
+            <button onClick={() => navigate("/calendar")}>View Calendar</button>
         </li>
       </ul>
     </div>

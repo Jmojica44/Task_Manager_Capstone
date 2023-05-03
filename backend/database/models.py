@@ -38,8 +38,9 @@ class Task(db.Model):
     category = db.Column(db.String(255), nullable=False)
     status = db.Column(db.String(255), nullable=False)
     point_value = db.Column(db.Integer)
-    start_date = db.Column(db.Integer)
-    end_date = db.Column(db.Integer)
+    start_date = db.Column(db.String(255))
+    end_date = db.Column(db.String(255))
+    timeframe = db.Column(db.String(255))
     # Adds user_id as an Integer column on the task table which references the id column on user table
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     # Establishes object relation between task-user so we can grab values like task.user.username

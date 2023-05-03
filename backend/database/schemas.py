@@ -65,12 +65,13 @@ class TaskSchema(ma.Schema):
     category = fields.String(required=True)
     status = fields.String(required=True)
     point_value = fields.Integer()
-    start_date = fields.Integer()
-    end_date = fields.Integer()
+    start_date = fields.String(required=True)
+    end_date = fields.String(required=True)
+    timeframe = fields.String(required=True)
     user_id = fields.Integer()
     user = ma.Nested(UserSchema, many=False)
     class Meta:
-        fields = ("id", "task", "category", "status", "point_value", "start_date", "end_date" "user_id", "user")
+        fields = ("id", "task", "category", "status", "point_value", "start_date", "end_date", "timeframe", "user_id", "user")
     
     @post_load
     def create_task(self, data, **kwargs):
