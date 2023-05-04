@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import useAuth from '../../hooks/useAuth';
 
 const AddNewTask = (props) => {
 
@@ -6,32 +8,43 @@ const AddNewTask = (props) => {
     const [category, setCategory] = useState("");
     const [status, setStatus] = useState("");
     const [point_value, setPoint_value] = useState("");
+    const [timeframe, setTimeframe] = useState("");
     const [start_date, setStart_date] = useState("");
     const [end_date, setEnd_date] = useState("");
-    const [user, setUser] = useState("");
     const [task_id, setTask_id] = useState("");
+    const [tasks, setTasks] = useState([]);
+    const [user, token] = useAuth();
+    
+    async function getAllTasks() {
+        let response = await axios.get(`http://127.0.0.1:5000/api/user_tasks`, {headers: {Authorization: 'Bearer ' + token}});
+        setTasks(response.data);
+      }
+
+    async function addNewTask(newTask) {
+        let response = await axios.post('http://127.0.0.1:5000/api/user_tasks', newTask, {headers: {Authorization: 'Bearer ' + token}});
+                if(response.status === 201) {
+          await getAllTasks();
+        }
+      }
 
     function handleSubmit(event) {
         event.preventDefault();
         let newTask = {
-            task_id: props.bookName,
             task: task,
             category: category,
             status: status,
             point_value: point_value,
+            timeframe: timeframe,
             start_date: start_date,
             end_date: end_date,
         };
         console.log(newTask);
-        props.addNewTaskProperty(newTask);
+        addNewTask(newTask);
     };
 
     return (
+        <div>
         <form onSubmit={handleSubmit} className ="form-grid">
-            <div className="form-group">
-                <label> Task ID </label>
-                <input type="text" className="form-control" id="inputTask_id" placeholder="Task_id" value={task_id} onChange={(event) => setTask_id(event.target.value)} />
-            </div>
             <div className="form-group">
                 <label> Task </label>
                 <input type="text" className="form-control" id="inputTask" placeholder="Task" value={task} onChange={(event) => setTask(event.target.value)} />
@@ -49,6 +62,10 @@ const AddNewTask = (props) => {
                 <input type="text" className="form-control" id="inputPoint_value" placeholder="Point_value" value={point_value} onChange={(event) => setPoint_value(event.target.value)} />
             </div>
             <div className="form-group">
+                <label> Timeframe </label>
+                <input type="text" className="form-control" id="inputTimeframe" placeholder="Timeframe" value={timeframe} onChange={(event) => setTimeframe(event.target.value)} />
+            </div>
+            <div className="form-group">
                 <label> Start Date </label>
                 <input type="text" className="form-control" id="inputStart_date" placeholder="Start_date" value={start_date} onChange={(event) => setStart_date(event.target.value)} />
             </div>
@@ -58,6 +75,9 @@ const AddNewTask = (props) => {
             </div>
             <button type="submit" className="btn btn-primary" style={{"margin-top": "1em"}}> Add </button>
         </form>
+        <h3> Tasks </h3>
+        {/* <AddNewTask addNewTaskProperty={addNewTask} task={task}/> */}
+        </div>
     )
 };
 
