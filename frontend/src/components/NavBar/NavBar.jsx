@@ -15,7 +15,7 @@ const Navbar = () => {
             <b>Task Manager</b>
           </Link>
         </li>
-        <li>
+        <li className="space">
           {user ? (
             <button onClick={logoutUser}>Logout</button>
           ) : (

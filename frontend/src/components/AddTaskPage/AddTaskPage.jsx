@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
+import "./AddTaskPage.css";
 
 const AddNewTask = (props) => {
 
@@ -44,7 +45,7 @@ const AddNewTask = (props) => {
 
     return (
         <div>
-        <form onSubmit={handleSubmit} className ="form-grid">
+        <form onSubmit={handleSubmit} className ="form-grid border2">
             <div className="form-group">
                 <label> Task </label>
                 <input type="text" className="form-control" id="inputTask" placeholder="Task" value={task} onChange={(event) => setTask(event.target.value)} />
@@ -67,16 +68,14 @@ const AddNewTask = (props) => {
             </div>
             <div className="form-group">
                 <label> Start Date </label>
-                <input type="text" className="form-control" id="inputStart_date" placeholder="Start_date" value={start_date} onChange={(event) => setStart_date(event.target.value)} />
+                <input type="text" className="form-control" id="inputStart_date" placeholder="ex. 2023-05-08" value={start_date} onChange={(event) => setStart_date(event.target.value)} />
             </div>
             <div className="form-group">
                 <label> End Date </label>
-                <input type="text" className="form-control" id="inputEnd_date" placeholder="End_date" value={end_date} onChange={(event) => setEnd_date(event.target.value)} />
+                <input type="text" className="form-control" id="inputEnd_date" placeholder="ex. 2024-05-08" value={end_date} onChange={(event) => setEnd_date(event.target.value)} />
             </div>
             <button type="submit" className="btn btn-primary" style={{"margin-top": "1em"}}> Add </button>
         </form>
-        <h3> Tasks </h3>
-        {/* <AddNewTask addNewTaskProperty={addNewTask} task={task}/> */}
         </div>
     )
 };

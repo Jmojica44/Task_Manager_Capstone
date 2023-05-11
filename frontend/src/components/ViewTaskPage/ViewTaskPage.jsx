@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
+import "./ViewTaskPage.css";
 
 const AddTaskPage = () => {
   const [dailyTasks, setDailyTasks] = useState([]);
@@ -17,7 +18,7 @@ const AddTaskPage = () => {
     setWeeklyTasks(response.data.filter(task => task.timeframe === 'Weekly'));
     setMonthlyTasks(response.data.filter(task => task.timeframe === 'Monthly'));
     setHealthTasks(response.data.filter(task => task.category === 'Health'));
-    setChoreTasks(response.data.filter(task => task.category === 'Chores'));
+    setChoreTasks(response.data.filter(task => task.category === 'Chore'));
     setLifestyleTasks(response.data.filter(task => task.category === 'Lifestyle'));
   }
 
@@ -28,67 +29,68 @@ const AddTaskPage = () => {
     <div>
       <h1>Tasks Page</h1>
       <h2>Daily Tasks</h2>
-      <ul>
+      <ul class='list'>
         {dailyTasks.map(task => (
-          <li key={task.task_id}>
-            <p>Task: {task.task}</p>
-            <p>Category: {task.category} </p>
-            <p>Status: {task.status} </p>
+          <li class='border' key={task.task_id}>
+            <p class='text_size'>Task: {task.task}</p>
+            <p class='text_size'>Category: {task.category} </p>
+            <p class='text_size'>Status: {task.status} </p>
+            {/* <a href="#"><img class="imgsize2" src="assets/download.png" alt="Delete"/> </a> */}
           </li>
         ))}
       </ul>
       <br></br>
       <h2>Weekly Tasks</h2>
-      <ul>
+      <ul class='list'>
         {weeklyTasks.map(task => (
-          <li key={task.task_id}>
-            <p>Task: {task.task}</p>
-            <p>Category: {task.category} </p>
-            <p>Status: {task.status} </p>
+          <li class='border' key={task.task_id}>
+            <p class='text_size'>Task: {task.task}</p>
+            <p class='text_size'>Category: {task.category} </p>
+            <p class='text_size'>Status: {task.status} </p>
           </li>
         ))}
       </ul>
       <br></br>
       <h2>Monthly Tasks</h2>
-      <ul>
+      <ul class='list'>
         {monthlyTasks.map(task => (
-          <li key={task.task_id}>
-            <p>Task: {task.task}</p>
-            <p>Category: {task.category} </p>
-            <p>Status: {task.status} </p>
+          <li class='border' key={task.task_id}>
+            <p class='text_size'>Task: {task.task}</p>
+            <p class='text_size'>Category: {task.category} </p>
+            <p class='text_size'>Status: {task.status} </p>
           </li>
         ))}
       </ul>
-      <br></br>
+      <br class='bottom'></br>
       <h2>Health Tasks</h2>
-      <ul>
+      <ul class='list'>
         {healthTasks.map(task => (
-          <li key={task.task_id}>
-            <p>Task: {task.task}</p>
-            <p>Timeframe: {task.timeframe} </p>
-            <p>Status: {task.status} </p>
+          <li class='border' key={task.task_id}>
+            <p class='text_size'>Task: {task.task}</p>
+            <p class='text_size'>Timeframe: {task.timeframe} </p>
+            <p class='text_size'>Status: {task.status} </p>
           </li>
         ))}
       </ul>
       <br></br>
       <h2>Chores</h2>
-      <ul>
+      <ul class='list'>
         {choreTasks.map(task => (
-          <li key={task.task_id}>
-            <p>Task: {task.task}</p>
-            <p>Timeframe: {task.timeframe} </p>
-            <p>Status: {task.status} </p>
+          <li class='border' key={task.task_id}>
+            <p class='text_size'>Task: {task.task}</p>
+            <p class='text_size'>Timeframe: {task.timeframe} </p>
+            <p class='text_size'>Status: {task.status} </p>
           </li>
         ))}
       </ul>
       <br></br>
       <h2>Lifestyle</h2>
-      <ul>
+      <ul class='list'>
         {lifestyleTasks.map(task => (
-          <li key={task.task_id}>
-            <p>Task: {task.task}</p>
-            <p>Timeframe: {task.timeframe} </p>
-            <p>Status: {task.status} </p>
+          <li class='border' key={task.task_id}>
+            <p class='text_size'>Task: {task.task}</p>
+            <p class='text_size'>Timeframe: {task.timeframe} </p>
+            <p class='text_size'>Status: {task.status} </p>
           </li>
         ))}
       </ul>

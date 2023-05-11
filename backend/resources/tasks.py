@@ -50,12 +50,10 @@ class UserTaskResource(Resource):
     
 class TaskDetailResource(Resource):
 
-    
-
     @jwt_required()
     def put(self, task_id):
         task_from_db = Task.query.get(task_id)
-        if not task:
+        if not task_from_db:
             return {'message': 'Task not found'}, 404
         if 'task' in request.json:
             task_from_db.task = request.json['task']
@@ -82,11 +80,10 @@ class TaskDetailResource(Resource):
     
     @jwt_required()
     def delete(self, task_id):
-        task = Task.query.get(task_id)
-        if not task:
+        task_from_db = Task.query.get(task_id)
+        if not task_from_db:
             return {'message': 'Task not found'}, 404
-
-        db.session.delete(task)
+        db.session.delete(task_from_db)
         db.session.commit()
 
         return '', 204
