@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import AddTaskPage from "./components/AddTaskPage/AddTaskPage";
 import ViewTaskPage from "./components/ViewTaskPage/ViewTaskPage";
 import CalendarPage from "./components/CalendarPage/CalendarPage";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -26,12 +27,13 @@ function App() {
           path="/"
           element={
             <PrivateRoute>
-              <HomePage />
+              <Dashboard />
             </PrivateRoute>
           }
         />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/viewtask" element={<ViewTaskPage />} />
         <Route path="/addtask" element={<AddTaskPage />} />
         <Route path="/calendar" element={<CalendarPage />} />

@@ -31,16 +31,11 @@ export default class DemoApp extends React.Component {
             selectMirror={true}
             dayMaxEvents={true}
             weekends={this.state.weekendsVisible}
-            initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+            initialEvents={INITIAL_EVENTS} 
             select={this.handleDateSelect}
-            eventContent={renderEventContent} // custom render function
+            eventContent={renderEventContent} 
             eventClick={this.handleEventClick}
-            eventsSet={this.handleEvents} // called after events are initialized/added/changed/removed
-            /* you can update a remote database when these fire:
-            eventAdd={function(){}}
-            eventChange={function(){}}
-            eventRemove={function(){}}
-            */
+            eventsSet={this.handleEvents} 
           />
         </div>
       </div>
@@ -88,7 +83,7 @@ export default class DemoApp extends React.Component {
     let title = prompt('Please enter a new title for your event')
     let calendarApi = selectInfo.view.calendar
 
-    calendarApi.unselect() // clear date selection
+    calendarApi.unselect()
 
     if (title) {
       calendarApi.addEvent({

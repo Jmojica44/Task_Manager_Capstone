@@ -1,0 +1,134 @@
+.width {
+    width: 350px;
+    padding: 1em;
+    background-color: #152733;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.width2 {
+    width: 1000px;
+    padding: 1em;
+    background-color: #152733 ;
+}
+
+.dashboard1 {
+    color: white;
+    background-color: #152733;
+    flex-direction: column;
+}
+
+.dashboard2 {
+    color: white;
+    background-color: #152733;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.circle-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .circle-list li {
+    display: flex;
+    align-items: center;
+  }
+  
+  .circle-list li::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: white;
+    margin-left: 8px;
+  }
+
+  .bordered {
+    border-style: solid;
+    border-width: 1px;
+    padding: 1em;
+    width: 280px;
+    border-color: white;
+    border: 1px solid #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+
+  .bordered2 {
+    border-style: solid;
+    border-width: 1px;
+    width: 280px;
+    border-color: white;
+    padding: .1em;
+    border: 1px solid #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+
+  .dashboard3 {
+    color: white;
+    background-color: #152733;
+    font-size: 30px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: .5em;
+    margin-bottom: 1em;
+}
+
+.width3 {
+    display: flex;
+    width: 100%;
+    background-color: #152733;
+    overflow-x: auto;
+}
+
+.positioning {
+  margin: 1em;
+}
+
+.chartformat {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 75px;
+}
+
+.tasklist {
+  font-size: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -1em;
+}
+
+.dashboard4 {
+  color: white;
+  background-color: #152733;
+  font-size: 24px;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: .5em;
+  margin-top: -1em;
+}

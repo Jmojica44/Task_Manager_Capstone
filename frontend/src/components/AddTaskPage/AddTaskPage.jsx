@@ -4,7 +4,6 @@ import useAuth from '../../hooks/useAuth';
 import "./AddTaskPage.css";
 
 const AddNewTask = (props) => {
-
     const [task, setTask] = useState("");
     const [category, setCategory] = useState("");
     const [status, setStatus] = useState("");
@@ -41,41 +40,88 @@ const AddNewTask = (props) => {
         };
         console.log(newTask);
         addNewTask(newTask);
+
+        setTask("");
+        setCategory("");
+        setStatus("");
+        setPoint_value("");
+        setTimeframe("");
+        setStart_date("");
+        setEnd_date("");
     };
 
     return (
-        <div>
-        <form onSubmit={handleSubmit} className ="form-grid border2">
-            <div className="form-group">
-                <label> Task </label>
-                <input type="text" className="form-control" id="inputTask" placeholder="Task" value={task} onChange={(event) => setTask(event.target.value)} />
+        <div className="form-body">
+            <div className="row">
+                <div className="form-holder"> 
+                    <div className="form-content">
+                        <div className="form-items">
+                            <h3> Add A New Task</h3>
+                            <p> Fill in the data below</p>
+                            <form onSubmit={handleSubmit}> 
+                                <div className="col-md-12">
+                                    <input type="text" className="form-control" id="inputTask" placeholder="Task" value={task} onChange={(event) => setTask(event.target.value)} />
+                                </div>
+                                <div className="col-md-12">
+                                <select className="form-select mt-3" id="inputCategory" placeholder="Category" value={category} onChange={(event) => setCategory(event.target.value)}>
+                                    <option value="">Category</option>
+                                    <option value="Lifestyle">Lifestyle</option>
+                                    <option value="Health">Health</option>
+                                    <option value="Chore">Chore</option>
+                                </select>
+                                </div>
+                                <div className="col-md-12">
+                                    <select className="form-select mt-3" id="inputCategory" placeholder="Status" value={status} onChange={(event) => setStatus(event.target.value)}>
+                                        <option value="">Status</option>
+                                        <option value="Not started">Not Started</option>
+                                        <option value="Started">Started</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
+                                <div className="col-md-12">
+                                    <input type="text" className="form-control" id="inputPoint_value" placeholder="Point Value" value={point_value} onChange={(event) => setPoint_value(event.target.value)}/>
+                                </div>
+                                {/* <div className="col-md-12">
+                                    <select className="form-select mt-3" id="inputPoint_value" placeholder="Point Value" value={point_value} onChange={(event) => setPoint_value(event.target.value)}>
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                        <option value={5}>5</option>
+                                        <option value={6}>6</option>
+                                        <option value={7}>7</option>
+                                        <option value={8}>8</option>
+                                        <option value={9}>9</option>
+                                        <option value={10}>10</option>
+                                    </select>
+                                </div> */}
+                                <div className="col-md-12">
+                                    <select className="form-select mt-3" id="inputTimeframe" placeholder="Timeframe" value={timeframe} onChange={(event) => setTimeframe(event.target.value)}>
+                                        <option value="">Timeframe</option>
+                                        <option value="Daily">Daily</option>
+                                        <option value="Weekly">Weekly</option>
+                                        <option value="Monthly">Monthly</option>
+                                    </select>
+                                </div>
+                                <br />
+                                <div className="col-md-12">
+                                    <label> Start Date </label>
+                                    <input type="text" className="form-control" id="inputStart_date" placeholder="yyyy-mm-dd" value={start_date} onChange={(event) => setStart_date(event.target.value)} />
+                                </div>
+                                <br />
+                                <div className="col-md-12">
+                                    <label> End Date </label>
+                                    <input type="text" className="form-control" id="inputEnd_date" placeholder="yyyy-mm-dd" value={end_date} onChange={(event) => setEnd_date(event.target.value)} />
+                                </div>
+                                <br />
+                                <div className="form-button mt-3">
+                                    <button id="submit" type="submit" className="btn btn-primary">Add Task</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div> 
             </div>
-            <div className="form-group">
-                <label> Category </label>
-                <input type="text" className="form-control" id="inputCategory" placeholder="Text" value={category} onChange={(event) => setCategory(event.target.value)} />
-            </div>
-            <div className="form-group">
-                <label> Status </label>
-                <input type="text" className="form-control" id="inputStatus" placeholder="Status" value={status} onChange={(event) => setStatus(event.target.value)} />
-            </div>
-            <div className="form-group">
-                <label> Point Value </label>
-                <input type="text" className="form-control" id="inputPoint_value" placeholder="Point_value" value={point_value} onChange={(event) => setPoint_value(event.target.value)} />
-            </div>
-            <div className="form-group">
-                <label> Timeframe </label>
-                <input type="text" className="form-control" id="inputTimeframe" placeholder="Timeframe" value={timeframe} onChange={(event) => setTimeframe(event.target.value)} />
-            </div>
-            <div className="form-group">
-                <label> Start Date </label>
-                <input type="text" className="form-control" id="inputStart_date" placeholder="ex. 2023-05-08" value={start_date} onChange={(event) => setStart_date(event.target.value)} />
-            </div>
-            <div className="form-group">
-                <label> End Date </label>
-                <input type="text" className="form-control" id="inputEnd_date" placeholder="ex. 2024-05-08" value={end_date} onChange={(event) => setEnd_date(event.target.value)} />
-            </div>
-            <button type="submit" className="btn btn-primary" style={{"margin-top": "1em"}}> Add </button>
-        </form>
         </div>
     )
 };
